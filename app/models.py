@@ -1,5 +1,4 @@
 # app/models.py
-
 from sqlalchemy import Column, Integer, String, Date, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 from app.database import Base
@@ -15,7 +14,10 @@ class Worker(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
+    email = Column(String, unique=True, index=True)
+    phone = Column(String, unique=True)
 
+    # Define any relationships if necessary
     shifts = relationship("Shift", back_populates="worker")
 
 
